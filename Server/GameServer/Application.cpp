@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ConfigManager.h"
 #include "ClientDispatcher.h"
+#include "MatchingServerDispatcher.h"
 #include "DBDispatcher.h"
 #include "RedisDispatcher.h"
 #include "InterDispatcher.h"
@@ -18,6 +19,7 @@ Application::Application()
 	: networkEngine(new SimpleIO)
 	, configManager(new ConfigManager)
 	, clientDispatcher(new ClientDispatcher)
+	, matchingServerDispatcher(new MatchingServerDispatcher)
 	, dbDispatcher(new DBDispatcher)
 	, interDispatcher(new InterDispatcher)
 	, timerDispatcher(new TimerDispatcher)
@@ -32,6 +34,7 @@ Application::~Application()
 	delete timerDispatcher;
 	delete interDispatcher;
 	delete dbDispatcher;
+	delete matchingServerDispatcher;
 	delete clientDispatcher;	
 	delete configManager;
 	delete networkEngine;		
@@ -140,7 +143,13 @@ bool Application::OpenNetwork()
 
 bool Application::ConnectServer()
 {
-	return false;
+	if (!networkEngine->Connect(L"127.0.0.1", 31400, matchingServerDispatcher))
+	{
+		LOG_CRI(L"Fail to connect! ip: %s, port: %d", L"127.0.0.1", 31400);
+		return false;
+	}
+
+	return true;
 }
 
 bool Application::ConnectDB()

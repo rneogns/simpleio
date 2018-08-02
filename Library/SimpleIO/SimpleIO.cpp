@@ -29,6 +29,7 @@ SimpleIO::SimpleIO()
 	, messageQueue(new MessageQueue)
 	, timerQueue(new TimerQueue)
 	, acceptorManager(new AcceptorManager)
+	, connectorManager(new ConnectorManager)
 	, isRunning(false)
 {
 	Init();
@@ -38,6 +39,7 @@ SimpleIO::~SimpleIO()
 {
 	Stop();
 
+	delete connectorManager;
 	delete acceptorManager;
 	delete timerQueue;
 	delete messageQueue;

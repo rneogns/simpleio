@@ -6,6 +6,7 @@
 class SimpleIO;
 class ConfigManager;
 class ClientDispatcher;
+class MatchingServerDispatcher;
 class DBDispatcher;
 class RedisDispatcher;
 class InterDispatcher;
@@ -15,17 +16,18 @@ class GameManager;
 class Application
 {
 private:
-	ConfigManager* configManager;
-	SimpleIO* networkEngine;
-	ClientDispatcher* clientDispatcher;
-	DBDispatcher* dbDispatcher;
-	RedisDispatcher* redisDispatcher;
-	InterDispatcher* interDispatcher;
-	TimerDispatcher* timerDispatcher;
-	GameManager* gameManager;
+	ConfigManager*				configManager;
+	SimpleIO*					networkEngine;
+	ClientDispatcher*			clientDispatcher;
+	MatchingServerDispatcher*	matchingServerDispatcher;
+	DBDispatcher*				dbDispatcher;
+	RedisDispatcher*			redisDispatcher;
+	InterDispatcher*			interDispatcher;
+	TimerDispatcher*			timerDispatcher;
+	GameManager*				gameManager;
 
 public:
-	std::atomic_bool isRunning;
+	std::atomic_bool			isRunning;
 
 public:
 	Application();

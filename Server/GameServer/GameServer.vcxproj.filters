@@ -13,6 +13,7 @@
     <ClCompile Include="User.cpp" />
     <ClCompile Include="TimerDispatcher.cpp" />
     <ClCompile Include="RedisDispatcher.cpp" />
+    <ClCompile Include="MatchingServerDispatcher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Precompiled.h" />
@@ -29,5 +30,6 @@
     <ClInclude Include="User.h" />
     <ClInclude Include="TimerDispatcher.h" />
     <ClInclude Include="RedisDispatcher.h" />
+    <ClInclude Include="MatchingServerDispatcher.h" />
   </ItemGroup>
 </Project>
