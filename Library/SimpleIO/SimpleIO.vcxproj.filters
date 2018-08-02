@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Precompiled.cpp" />
+    <ClCompile Include="Acceptor.cpp" />
+    <ClCompile Include="AcceptorManager.cpp" />
+    <ClCompile Include="Dispatcher.cpp" />
+    <ClCompile Include="Session.cpp" />
+    <ClCompile Include="SessionManager.cpp" />
+    <ClCompile Include="MessageQueue.cpp" />
+    <ClCompile Include="DBThread.cpp" />
+    <ClCompile Include="DBManager.cpp" />
+    <ClCompile Include="ByteBuffer.cpp" />
+    <ClCompile Include="Stream.cpp" />
+    <ClCompile Include="TimerQueue.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="RedisThread.cpp" />
+    <ClCompile Include="RedisManager.cpp" />
+    <ClCompile Include="Redis.cpp" />
+    <ClCompile Include="MySQLConnector.cpp" />
+    <ClCompile Include="Connector.cpp" />
+    <ClCompile Include="ConnectorManager.cpp" />
+    <ClCompile Include="ConfigReader.cpp" />
+    <ClCompile Include="FileUtil.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="RandomUtil.cpp" />
+    <ClCompile Include="StringUtil.cpp" />
+    <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="TimeUtil.cpp" />
+    <ClCompile Include="IONotifier.cpp" />
+    <ClCompile Include="SimpleIO.cpp" />
+    <ClCompile Include="DispatchThread.cpp" />
+    <ClCompile Include="WorkerThread.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Acceptor.h" />
+    <ClInclude Include="AcceptorManager.h" />
+    <ClInclude Include="CommonTypes.h" />
+    <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="Session.h" />
+    <ClInclude Include="SessionManager.h" />
+    <ClInclude Include="MemoryPool.h" />
+    <ClInclude Include="PacketHeader.h" />
+    <ClInclude Include="MessageQueue.h" />
+    <ClInclude Include="DBThread.h" />
+    <ClInclude Include="DBManager.h" />
+    <ClInclude Include="ByteBuffer.h" />
+    <ClInclude Include="Stream.h" />
+    <ClInclude Include="InterMsgHeader.h" />
+    <ClInclude Include="TimerQueue.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="RedisThread.h" />
+    <ClInclude Include="RedisManager.h" />
+    <ClInclude Include="Redis.h" />
+    <ClInclude Include="MySQLConnector.h" />
+    <ClInclude Include="Connector.h" />
+    <ClInclude Include="ConnectorManager.h" />
+    <ClInclude Include="BaseDefines.h" />
+    <ClInclude Include="ConfigReader.h" />
+    <ClInclude Include="FileUtil.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="RandomUtil.h" />
+    <ClInclude Include="StringUtil.h" />
+    <ClInclude Include="Thread.h" />
+    <ClInclude Include="TimeUtil.h" />
+    <ClInclude Include="IONotifier.h" />
+    <ClInclude Include="SimpleIO.h" />
+    <ClInclude Include="DispatchThread.h" />
+    <ClInclude Include="WorkerThread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimpleIO.sln" />
+  </ItemGroup>
+</Project>
