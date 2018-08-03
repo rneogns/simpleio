@@ -57,9 +57,9 @@ public:
 
 		try
 		{
-			o = boost::lexical_cast<T>(fetched_row[curr_read_field++]);
+			out = boost::lexical_cast<T>(fetched_row[curr_read_field++]);
 		}
-		catch (bad_lexical_cast e)
+		catch (boost::bad_lexical_cast e)
 		{
 			std::cout << e.what() << std::endl;
 		}		

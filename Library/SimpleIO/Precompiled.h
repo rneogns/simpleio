@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _SIMPLEIO_PRECOMPILED_H_
+#define _SIMPLEIO_PRECOMPILED_H_
 
 #include <stdio.h>
 #include <string.h>
@@ -39,3 +40,5 @@ using namespace std;
 
 #include "CommonTypes.h"
 #include "Log.h"
+
+#endif //_SIMPLEIO_PRECOMPILED_H_

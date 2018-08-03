@@ -3,6 +3,7 @@
 #include "StringUtil.h"
 #include "Log.h"
 #include <errmsg.h>
+#include <boost/lexical_cast.hpp>
 
 MySQL::MySQL()
 	: mysql(nullptr)
@@ -268,7 +269,7 @@ bool MySQL::GetInt64(long long& o)
 	if (!result_set || curr_read_field >= num_of_fields)
 		return false;
 
-	o = _atoi64(fetched_row[curr_read_field++]);
+	o = boost::lexical_cast<long long>(fetched_row[curr_read_field++]);
 
 	return true;
 }
@@ -278,7 +279,7 @@ bool MySQL::GetInt64(unsigned long long& o)
 	if (!result_set || curr_read_field >= num_of_fields)
 		return false;
 
-	o = _atoi64(fetched_row[curr_read_field++]);
+	o = boost::lexical_cast<unsigned long long>(fetched_row[curr_read_field++]);
 
 	return true;
 }
