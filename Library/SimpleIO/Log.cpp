@@ -1,4 +1,5 @@
 #include "Precompiled.h"
+#include <stdarg.h>
 #include "BaseDefines.h"
 #include "Log.h"
 #include "TimeUtil.h"
@@ -66,7 +67,7 @@ void LogFile::Write(const string& logPath, const char* funcName, int lineNo, con
 	}
 
 	if (isWriteFuncName)
-		wsprintf(header, "%s %s(%d)", header, funcName, lineNo);
+		sprintf(header, "%s %s(%d)", header, funcName, lineNo);
 
 	fprintf(fp, "%s: %s\r\n", header, message);
 	printf("%s: %s\r\n", header, message);
@@ -111,7 +112,7 @@ void LogHelper::operator()(const char* message, ...)
 
 	va_list args;
 	va_start(args, message);
-	wvsprintf(buffer, message, args);
+	vsprintf(buffer, message, args);
 	va_end(args);
 
 	Log::GetInstance().WriteToFile(logType, funcName, lineNo, buffer);

@@ -3,8 +3,8 @@
 #include "MemoryPool.h"
 #include "PacketHeader.h"
 #include "InterMsgHeader.h"
+#include "ByteBuffer.h"
 
-class ByteBuffer;
 class Session;
 
 class Stream
