@@ -16,7 +16,7 @@ TARGET = libsimpleio.a
 all : $(TARGET)
 
 $(TARGET) : $(GCH) $(OBJS)
-	$(CXX) -o $@ $(OBJS) 
+	$(CXX) -o $@ $(OBJS) $(LDFLAGS)
 
 
 $(GCH) :
