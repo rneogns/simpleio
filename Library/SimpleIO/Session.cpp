@@ -1,9 +1,9 @@
 #include "Precompiled.h"
+#include "ByteBuffer.h"
 #include "Session.h"
 #include "SessionManager.h"
 #include "Dispatcher.h"
 #include "Stream.h"
-#include "ByteBuffer.h"
 #include "PacketHeader.h"
 
 Session::Session(boost::asio::io_service* ios)
