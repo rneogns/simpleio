@@ -38,7 +38,6 @@ public:
 	bool GetDouble(double& o);
 	bool GetBinary(char* out, int size);
 	int GetString(char* out);
-	int GetString(wchar_t* out);
 
 	bool PutByte(char v);
 	bool PutByte(unsigned char v);
@@ -52,7 +51,6 @@ public:
 	bool PutDouble(double v);
 	bool PutBinary(char* v, int size);
 	bool PutString(char* v, int size);
-	bool PutString(wchar_t* v, int size);
 
 	template <typename T>
 	bool Get(T& out)

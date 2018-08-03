@@ -6,7 +6,7 @@
 
 #define LINE_BUFFER 32768
 
-LogFile::LogFile(LogType type, wstring prefix, bool writeTime, bool writeFuncName, bool writePerHour)
+LogFile::LogFile(LogType type, string prefix, bool writeTime, bool writeFuncName, bool writePerHour)
 	: fp(0)
 	, logType(type)
 	, prefix(prefix)
@@ -22,35 +22,35 @@ LogFile::~LogFile()
 		fclose(fp);
 }
 
-void LogFile::OpenFile(const wstring& logPath)
+void LogFile::OpenFile(const string& logPath)
 {
-	wchar_t filename[MAX_FILENAME_LEN] = { 0, };
+	char filename[MAX_FILENAME_LEN] = { 0, };
 
 	struct tm nowTM;
 	TimeUtil::CurTimeTM(&nowTM);
 
 	if (isWritePerHour)
-		wsprintf(filename, L"%s%04d%02d%02d-%02d.log", prefix.c_str(), nowTM.tm_year + 1900, nowTM.tm_mon + 1, nowTM.tm_mday, nowTM.tm_hour);
+		sprintf(filename, "%s%04d%02d%02d-%02d.log", prefix.c_str(), nowTM.tm_year + 1900, nowTM.tm_mon + 1, nowTM.tm_mday, nowTM.tm_hour);
 	else
-		wsprintf(filename, L"%s%04d%02d%02d.log", prefix.c_str(), nowTM.tm_year + 1900, nowTM.tm_mon + 1, nowTM.tm_mday);
+		sprintf(filename, "%s%04d%02d%02d.log", prefix.c_str(), nowTM.tm_year + 1900, nowTM.tm_mon + 1, nowTM.tm_mday);
 
 	// 로그 디렉토리로 지정된 디렉토리가 없다면 생성해준다
 	if (FileUtil::Exists(logPath) == false)
 		FileUtil::CreateDirectory(logPath);
 
-	wstring fullpath(logPath);
-	if (fullpath.back() == L'/')
+	string fullpath(logPath);
+	if (fullpath.back() == '/')
 		fullpath += filename;
 	else
-		fullpath = fullpath + L'/' + filename;
+		fullpath = fullpath + '/' + filename;
 
-	fp = _wfopen(fullpath.c_str(), L"ab");
+	fp = fopen(fullpath.c_str(), "ab");
 }
 
-void LogFile::Write(const wstring& logPath, const wchar_t* funcName, int lineNo, const wchar_t* message)
+void LogFile::Write(const string& logPath, const char* funcName, int lineNo, const char* message)
 {
-	static wchar_t header[128] = { 0, };
-	static wchar_t buffer[LINE_BUFFER] = { 0, };
+	static char header[128] = { 0, };
+	static char buffer[LINE_BUFFER] = { 0, };
 
 	if (logPath.empty())
 		return;
@@ -62,24 +62,24 @@ void LogFile::Write(const wstring& logPath, const wchar_t* funcName, int lineNo,
 	{
 		struct tm nowTM;
 		TimeUtil::CurTimeTM(&nowTM);
-		wsprintf(header, L"[%02d:%02d:%02d]", nowTM.tm_hour, nowTM.tm_min, nowTM.tm_sec);
+		sprintf(header, "[%02d:%02d:%02d]", nowTM.tm_hour, nowTM.tm_min, nowTM.tm_sec);
 	}
 
 	if (isWriteFuncName)
-		wsprintf(header, L"%s %s(%d)", header, funcName, lineNo);
+		wsprintf(header, "%s %s(%d)", header, funcName, lineNo);
 
-	fwprintf(fp, L"%s: %s\r\n", header, message);
-	wprintf(L"%s: %s\r\n", header, message);
+	fprintf(fp, "%s: %s\r\n", header, message);
+	printf("%s: %s\r\n", header, message);
 
 	fflush(fp);
 }
 
 Log::Log()
 {
-	logFiles.push_back(LogFile(LogType::DEBUG	, L"Debug"	, true, true, false));
-	logFiles.push_back(LogFile(LogType::CORE	, L"Core"	, true, true, false));
-	logFiles.push_back(LogFile(LogType::INFO	, L"Info"	, true, true, false));
-	logFiles.push_back(LogFile(LogType::CRI		, L"Cri"	, true, true, false));
+	logFiles.push_back(LogFile(LogType::DEBUG	, "Debug"	, true, true, false));
+	logFiles.push_back(LogFile(LogType::CORE	, "Core"	, true, true, false));
+	logFiles.push_back(LogFile(LogType::INFO	, "Info"	, true, true, false));
+	logFiles.push_back(LogFile(LogType::CRI		, "Cri"	, true, true, false));
 }
 
 Log& Log::GetInstance()
@@ -88,26 +88,26 @@ Log& Log::GetInstance()
 	return inst;
 }
 
-void Log::WriteToFile(LogType type, const wchar_t* funcName, int lineNo, const wchar_t* message)
+void Log::WriteToFile(LogType type, const char* funcName, int lineNo, const char* message)
 {
 	logFiles[type].Write(path, funcName, lineNo, message);
 }
 
-void Log::SetLogPath(wstring dir)
+void Log::SetLogPath(string dir)
 {
 	path = dir;
 }
 
-LogHelper::LogHelper(LogType type, const wchar_t* funcName, int lineNo)
+LogHelper::LogHelper(LogType type, const char* funcName, int lineNo)
 	: logType(type)
 	, funcName(funcName)
 	, lineNo(lineNo)
 {
 }
 
-void LogHelper::operator()(const wchar_t* message, ...)
+void LogHelper::operator()(const char* message, ...)
 {
-	static wchar_t buffer[LINE_BUFFER] = { 0, };
+	static char buffer[LINE_BUFFER] = { 0, };
 
 	va_list args;
 	va_start(args, message);

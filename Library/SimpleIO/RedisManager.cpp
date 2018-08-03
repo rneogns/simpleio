@@ -13,7 +13,7 @@ RedisManager::~RedisManager()
 	Close();
 }
 
-bool RedisManager::Open(int idx, const wchar_t* ip, unsigned int port)
+bool RedisManager::Open(int idx, const char* ip, unsigned int port)
 {
 	if (GetRedisHandle(idx) != nullptr)
 	{

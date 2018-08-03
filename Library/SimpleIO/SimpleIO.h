@@ -71,8 +71,8 @@ public:
 	void Stop();
 	void SetRunning(bool flag);
 	bool Open(unsigned short port, IDispatcher* disp);
-	bool Open(const wchar_t* ip, unsigned short port, IDispatcher* disp);
-	bool Connect(const wchar_t* ip, unsigned short port, IDispatcher* disp);
+	bool Open(const char* ip, unsigned short port, IDispatcher* disp);
+	bool Connect(const char* ip, unsigned short port, IDispatcher* disp);
 	void SetDBDispatcher(IDBDispatcher* disp);
 	void SetInterDispatcher(IInterDispatcher* disp);
 	void SetTimerDispatcher(ITimerDispatcher* disp);

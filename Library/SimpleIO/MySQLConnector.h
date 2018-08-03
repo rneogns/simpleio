@@ -14,7 +14,7 @@ private:
 	MYSQL* mysql;						// MySQL 핸들
 	MYSQL_RES* result_set;				// 결과셋이 저장된 포인터
 	MYSQL_ROW fetched_row;				// 결과셋의 하나의 row를 가르키는 포인터
-	wchar_t query[MAX_QUERY_LEN];		// 실행 할 쿼리 버퍼
+	char query[MAX_QUERY_LEN];		// 실행 할 쿼리 버퍼
 	unsigned long query_len;			// 실행 할 쿼리 길이
 	unsigned long long num_of_rows;		// 결과 행 수
 	unsigned int num_of_fields;			// 결과의 컬럼 수
@@ -26,9 +26,9 @@ public:
 	MySQL();
 	~MySQL();
 
-	bool Open(const wchar_t* ip, unsigned int port, const wchar_t* dbname, const wchar_t* id, const wchar_t* passwd);
+	bool Open(const char* ip, unsigned int port, const char* dbname, const char* id, const char* passwd);
 	void Close();
-	bool ExecuteQuery(const wchar_t* format, ...);
+	bool ExecuteQuery(const char* format, ...);
 	bool Fetch();
 	void ClearResultSet();	
 
@@ -48,7 +48,6 @@ public:
 	bool GetDouble(double& o);
 	bool GetBinary(char* buffer, int size);
 	bool GetString(char* buffer, int size);
-	bool GetString(wchar_t* buffer, int size);
 
 	template <typename T>
 	bool Get(T& out)

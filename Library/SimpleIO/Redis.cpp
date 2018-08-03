@@ -14,10 +14,10 @@ Redis::~Redis()
 	Close();
 }
 
-bool Redis::Open(const wchar_t* ip, unsigned int port)
+bool Redis::Open(const char* ip, unsigned int port)
 {
 	struct timeval timeout = { 1, 500000 }; // 1.5 seconds
-	ctx = redisConnectWithTimeout((const char*)WcsToMbcs(ip), port, timeout);
+	ctx = redisConnectWithTimeout(ip, port, timeout);
 	if (ctx->err) 
 	{
 		return false;

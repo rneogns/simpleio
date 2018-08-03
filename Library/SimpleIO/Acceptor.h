@@ -22,7 +22,7 @@ private:
 public:
 	Acceptor(IONotifier* ioNotifier, SessionManager* ssMgr, IDispatcher* disp);
 	
-	bool Open(const wchar_t* ip, unsigned short port);
+	bool Open(const char* ip, unsigned short port);
 
 private:
 	bool StartAccept();

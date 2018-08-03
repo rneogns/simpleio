@@ -47,7 +47,7 @@ const std::wstring& StringToWstring(const string& src)
 }
 
 // trim from start
-wstring& ltrim(wstring &s)
+string& ltrim(string &s)
 {
 	s.erase(s.begin(), std::find_if(s.begin(), s.end(),
 		std::not1(std::ptr_fun<int, int>(std::isspace))));
@@ -55,7 +55,7 @@ wstring& ltrim(wstring &s)
 }
 
 // trim from end
-wstring& rtrim(wstring &s)
+string& rtrim(string &s)
 {
 	s.erase(std::find_if(s.rbegin(), s.rend(),
 		std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
@@ -63,7 +63,7 @@ wstring& rtrim(wstring &s)
 }
 
 // trim from both ends
-wstring& trim(wstring &s)
+string& trim(string &s)
 {
 	return ltrim(rtrim(s));
 }

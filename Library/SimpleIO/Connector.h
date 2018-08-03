@@ -17,7 +17,7 @@ private:
 public:
 	Connector(IONotifier* ioMux, SessionManager* ssMgr, IDispatcher* disp);
 	
-	bool Connect(const wchar_t* ip, unsigned short port);
+	bool Connect(const char* ip, unsigned short port);
 
 private:
 	void OnConnected(Session* session, const boost::system::error_code& ec);

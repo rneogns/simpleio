@@ -9,16 +9,16 @@
 
 using namespace std;
 
-bool ConfigReader::Read(wstring filename)
+bool ConfigReader::Read(string filename)
 {
 	try
 	{
-		boost::property_tree::read_ini(W2S(filename), pt);
+		boost::property_tree::read_ini(filename, pt);
 		return true;
 	}
 	catch (std::exception& e)
 	{
-		LOG_CORE(L"Fail to read %s config file (%s)", filename.c_str(), e.what());
+		LOG_CORE("Fail to read %s config file (%s)", filename.c_str(), e.what());
 		return false;
 	}
 }

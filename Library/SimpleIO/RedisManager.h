@@ -11,7 +11,7 @@ public:
 	RedisManager();
 	virtual ~RedisManager();
 
-	bool Open(int idx, const wchar_t* ip, unsigned int port);
+	bool Open(int idx, const char* ip, unsigned int port);
 	void Close();
 
 	Redis* GetRedisHandle(int idx);

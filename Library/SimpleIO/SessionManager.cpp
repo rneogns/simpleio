@@ -53,7 +53,7 @@ void SessionManager::DestroySession(Session* s)
 
 	if (!_session_pool.is_from(s))
 	{
-		LOG_CORE(L"session pointer is something wrong");
+		LOG_CORE("session pointer is something wrong");
 		return;
 	}
 	_session_pool.destroy(s);

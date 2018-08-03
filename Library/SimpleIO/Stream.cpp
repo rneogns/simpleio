@@ -145,16 +145,6 @@ int Stream::GetString(char* out)
 	return len;
 }
 
-int Stream::GetString(wchar_t* out)
-{
-	int len = 0;
-	GetInt(len);
-
-	wcsncpy(out, (wchar_t *)byteBuffer->ReadPtr(), len);
-
-	return len;
-}
-
 bool Stream::PutByte(char v)
 {
 	*byteBuffer->WritePtr() = v;
@@ -250,18 +240,6 @@ bool Stream::PutString(char* v, int size)
 
 	// put string
 	strncpy((char *)byteBuffer->WritePtr(), (char *)v, (size_t)size);
-	byteBuffer->Write(size);
-
-	return true;
-}
-
-bool Stream::PutString(wchar_t* v, int size)
-{
-	// put string length
-	PutInt(size);
-
-	// put string
-	wcsncpy((wchar_t*)byteBuffer->WritePtr(), (wchar_t *)v, (size_t)size);
 	byteBuffer->Write(size);
 
 	return true;

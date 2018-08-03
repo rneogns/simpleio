@@ -12,10 +12,10 @@ Connector::Connector(IONotifier* ioNotifier, SessionManager* ssMgr, IDispatcher*
 {
 }
 
-bool Connector::Connect(const wchar_t* ip, unsigned short port)
+bool Connector::Connect(const char* ip, unsigned short port)
 {
 	boost::system::error_code connect_error;
-	boost::asio::ip::tcp::endpoint ep = boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(W2S(ip)), port);
+	boost::asio::ip::tcp::endpoint ep = boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(ip), port);
 
 	// 새로운 세션을 만들고
 	Session* session = _sessionMgr->CreateSession(_ioNotifier->get_io_service(), _dispatcher);
@@ -30,7 +30,7 @@ void Connector::OnConnected(Session* session, const boost::system::error_code& e
 {
 	if (ec.value() != 0)
 	{
-		LOG_CORE(L"Connector async_connect job error occurred. error number (%d)", ec.value());
+		LOG_CORE("Connector async_connect job error occurred. error number (%d)", ec.value());
 	}
 	else
 	{

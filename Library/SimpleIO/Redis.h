@@ -13,6 +13,6 @@ public:
 	Redis();
 	~Redis();
 
-	bool Open(const wchar_t* ip, unsigned int port);
+	bool Open(const char* ip, unsigned int port);
 	void Close();
 };

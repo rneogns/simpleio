@@ -46,14 +46,14 @@ bool MySQL::Initialize()
 	return true;
 }
 
-bool MySQL::Open(const wchar_t* ip, unsigned int port, const wchar_t* dbname, const wchar_t* id, const wchar_t* passwd)
+bool MySQL::Open(const char* ip, unsigned int port, const char* dbname, const char* id, const char* passwd)
 {
 	if (!Initialize())
 	{
 		return false;
 	}
 
-	if (!mysql_real_connect(mysql, WcsToMbcs(ip), WcsToMbcs(id), WcsToMbcs(passwd), WcsToMbcs(dbname), port, nullptr, CLIENT_INTERACTIVE))
+	if (!mysql_real_connect(mysql, ip, id, passwd, dbname, port, nullptr, CLIENT_INTERACTIVE))
 	{
 		db_errno = mysql_errno(mysql);
 		return false;
@@ -70,19 +70,19 @@ void MySQL::Close()
 	mysql = nullptr;
 }
 
-bool MySQL::ExecuteQuery(const wchar_t* format, ...)
+bool MySQL::ExecuteQuery(const char* format, ...)
 {
 	// 가변인수 쿼리를 완성하고
 	va_list args;
 	va_start(args, format);
-	wvsprintf(query, format, args);
+	vsprintf(query, format, args);
 	va_end(args);
 
 	// 쿼리 사이즈를 넘어가는지 확인한다
-	query_len = (unsigned long)wcslen(query);
+	query_len = (unsigned long)strlen(query);
 	if (query_len >= MAX_QUERY_LEN)
 	{
-		LOG_CORE(L"Query length over. check the query (%u:%s)", query_len, query);
+		LOG_CORE("Query length over. check the query (%u:%s)", query_len, query);
 		return true;
 	}
 
@@ -103,7 +103,7 @@ bool MySQL::ExecuteQuery(const wchar_t* format, ...)
 			// DB작업이 재시도 해도 성공할 수 없었다. 로그를 찍고, 추후에는 서버를 내리도록 하는게 좋겠다.
 			if (i == RETRY_COUNT - 1)
 			{
-				LOG_CORE(L"db job failed");
+				LOG_CORE("db job failed");
 				return false;
 			}
 		}
@@ -127,7 +127,7 @@ bool MySQL::ExecuteQuery(const wchar_t* format, ...)
 bool MySQL::DoQuery()
 {
 	// 쿼리를 실행하고, 실패시 에러번호를 설정하고 리턴한다
-	int ret = mysql_real_query(mysql, WcsToMbcs(query), query_len);
+	int ret = mysql_real_query(mysql, query, query_len);
 	if (ret != 0)
 	{
 		db_errno = mysql_errno(mysql);
@@ -136,13 +136,13 @@ bool MySQL::DoQuery()
 		if (db_errno == CR_SERVER_GONE_ERROR || db_errno == CR_SERVER_LOST
 			|| db_errno == CR_UNKNOWN_HOST || db_errno == CR_CONN_HOST_ERROR)
 		{
-			LOG_CORE(L"mysql connection lost (error: %d), try reconnect", db_errno);
+			LOG_CORE("mysql connection lost (error: %d), try reconnect", db_errno);
 
 			// MYSQL_OPT_RECONNECT 옵션이 켜져있으므로 mysql_ping으로 재연결을 시도해보고
 			if (mysql_ping(mysql) != 0)
 			{
 				// 실패하면 다시 연결해 본다
-				if (!Open(MbcsToWcs(mysql->host), mysql->port, MbcsToWcs(mysql->db), MbcsToWcs(mysql->user), MbcsToWcs(mysql->passwd)))
+				if (!Open(mysql->host, mysql->port, mysql->db, mysql->user, mysql->passwd))
 					return false;
 			}
 		}
@@ -315,15 +315,6 @@ bool MySQL::GetBinary(char* buffer, int size)
 bool MySQL::GetString(char* buffer, int size)
 {
 	strncpy(buffer, fetched_row[curr_read_field++], size);
-
-	return true;
-}
-
-bool MySQL::GetString(wchar_t* buffer, int size)
-{
-	char strbuf[8192] = { 0, };
-	strncpy(strbuf, fetched_row[curr_read_field++], sizeof(strbuf));
-	wcsncpy(buffer, MbcsToWcs(strbuf), size);
 
 	return true;
 }

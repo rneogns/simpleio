@@ -14,14 +14,14 @@ Acceptor::Acceptor(IONotifier* ioNotifier, SessionManager* ssMgr, IDispatcher* d
 {
 }
 
-bool Acceptor::Open(const wchar_t* ip, unsigned short port)
+bool Acceptor::Open(const char* ip, unsigned short port)
 {
 	boost::asio::ip::tcp::endpoint ep;
 
 	if (ip == nullptr)
 		ep = boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port);
 	else
-		ep = boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(W2S(ip)), port);
+		ep = boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(ip), port);
 
 	try
 	{

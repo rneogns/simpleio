@@ -13,7 +13,7 @@ DBManager::~DBManager()
 	Close();
 }
 
-bool DBManager::Open(int idx, const wchar_t* ip, unsigned int port, const wchar_t* dbname, const wchar_t* id, const wchar_t* passwd)
+bool DBManager::Open(int idx, const char* ip, unsigned int port, const char* dbname, const char* id, const char* passwd)
 {
 	if (GetDBHandle(idx) != nullptr)
 	{

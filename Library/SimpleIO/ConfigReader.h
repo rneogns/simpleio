@@ -12,10 +12,10 @@ private:
 	boost::property_tree::wptree pt;
 
 public:
-	bool Read(wstring filename);
+	bool Read(string filename);
 
 	template <typename T>
-	T Get(wstring section_key, T default_value)
+	T Get(string section_key, T default_value)
 	{
 		try
 		{
@@ -23,7 +23,7 @@ public:
 		}
 		catch (std::exception& e)
 		{
-			LOG_CORE(L"Fail to get %s key (%s)", section_key.c_str(), e.what());
+			LOG_CORE("Fail to get %s key (%s)", section_key.c_str(), e.what());
 			return default_value;
 		}		
 	}

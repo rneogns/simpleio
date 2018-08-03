@@ -143,7 +143,7 @@ bool SimpleIO::Open(unsigned short port, IDispatcher* disp)
 	return Open(nullptr, port, disp);
 }
 
-bool SimpleIO::Open(const wchar_t* ip, unsigned short port, IDispatcher* disp)
+bool SimpleIO::Open(const char* ip, unsigned short port, IDispatcher* disp)
 {
 	Acceptor* acceptor = acceptorManager->CreateAcceptor(ioNotifier, sessionManager, disp);
 	if (acceptor->Open(ip, port) == false)
@@ -152,7 +152,7 @@ bool SimpleIO::Open(const wchar_t* ip, unsigned short port, IDispatcher* disp)
 	return true;
 }
 
-bool SimpleIO::Connect(const wchar_t* ip, unsigned short port, IDispatcher* disp)
+bool SimpleIO::Connect(const char* ip, unsigned short port, IDispatcher* disp)
 {
 	Connector* connector = connectorManager->CreateConnector(ioNotifier, sessionManager, disp);
 	if (connector->Connect(ip, port) == false)

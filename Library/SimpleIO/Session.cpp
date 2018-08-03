@@ -113,7 +113,7 @@ void Session::OnRecv(const boost::system::error_code& ec, size_t recv_bytes)
 	// Recv 작업이 실패한 경우 세션을 끊어준다.
 	if (ec.value() != 0)
 	{
-		LOG_CORE(L"session receive job error occurred. error number (%d)", ec.value());
+		LOG_CORE("session receive job error occurred. error number (%d)", ec.value());
 		CloseSession();
 		return;
 	}
@@ -121,7 +121,7 @@ void Session::OnRecv(const boost::system::error_code& ec, size_t recv_bytes)
 	//  상대방이 끊을 경우에도 접속종료 처리를 한다
 	if (recv_bytes == 0)
 	{
-		LOG_CORE(L"peer has disconnected");
+		LOG_CORE("peer has disconnected");
 		CloseSession();
 		return;
 	}
@@ -132,7 +132,7 @@ void Session::OnRecv(const boost::system::error_code& ec, size_t recv_bytes)
 	if (_dispatcher->Parsing(this, _recvBuffer) == false)
 	{
 		// 파싱이 실패한 경우에 접속종료 처리를 한다
-		LOG_CORE(L"packet parsing error occurred. session will close");
+		LOG_CORE("packet parsing error occurred. session will close");
 		CloseSession();
 		return;
 	}
@@ -149,5 +149,5 @@ void Session::StartSend()
 
 void Session::OnSend(const boost::system::error_code& ec, size_t send_bytes)
 {
-	LOG_CORE(L"send bytes: %d\n", send_bytes);
+	LOG_CORE("send bytes: %d\n", send_bytes);
 }
