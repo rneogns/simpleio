@@ -1,10 +1,10 @@
 CXX = g++
 CC = $(CXX)
-INCLUDE = -I../ExternalLibs/Boost/Include -I../ExternalLibs/Hiredis/Include \
-	  -I../ExternalLibs/MySQL/Include
+INCLUDE = -I../Deps/Boost/Include -I../Deps/Hiredis/Include \
+	  -I../Deps/MySQL/Include
 CXXFLAGS = -std=c++11 -D_GNU_SOURCE -D_REENTRANT $(INCLUDE)
 CFLAGS = $(CXXFLAGS)
-LIB_DIR = -L./ -L../ExternalLibs/Boost/Lib/ -L../ExternalLibs/MySQL/Lib/
+LIB_DIR = -L./ -L../Deps/Boost/Lib/ -L../Deps/MySQL/Lib/
 LDFLAGS = $(LIB_DIR) -lboost_system -lmysql -lstdc++ -lpthread -lrt
 
 SRCS = $(wildcard *.cpp)
