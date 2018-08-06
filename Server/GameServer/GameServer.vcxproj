@@ -102,7 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_WINDOWS;_WIN32_WINNT=0x0501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Library\SimpleIO;..\..\Library\ExternalLibs\Boost\Include;..\..\Library\ExternalLibs\Zlib\Include;..\..\Library\ExternalLibs\MySQL\Include;..\..\Library\ExternalLibs\MessagePack\Include;..\..\Library\ExternalLibs\External\Hiredis\Include;..\..\Library\ExternalLibs\Hiredis\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Library\SimpleIO;..\..\Library\Deps\Boost\Include;..\..\Library\Deps\Zlib\Include;..\..\Library\Deps\MySQL\Include;..\..\Library\Deps\MessagePack\Include;..\..\Library\Deps\External\Hiredis\Include;..\..\Library\Deps\Hiredis\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
@@ -112,7 +112,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\Library\SimpleIO\Lib;..\..\Library\ExternalLibs\Zlib\Lib;..\..\Library\ExternalLibs\MySQL\Lib;..\..\Library\ExternalLibs\MessagePack\Lib;..\..\Library\ExternalLibs\Hiredis\Lib;..\..\Library\ExternalLibs\Boost\Lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Library\SimpleIO\Lib;..\..\Library\Deps\Zlib\Lib;..\..\Library\Deps\MySQL\Lib;..\..\Library\Deps\MessagePack\Lib;..\..\Library\Deps\Hiredis\Lib;..\..\Library\Deps\Boost\Lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>ws2_32.lib;Mswsock.lib;simpleio_d.lib;zlib_d.lib;libmysql_d.lib;hiredis_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
