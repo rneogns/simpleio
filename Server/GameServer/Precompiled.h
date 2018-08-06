@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _GAMESERVER_PRECOMPILED_H_
+#define _GAMESERVER_PRECOMPILED_H_
 
 #include <stdio.h>
 #include <string.h>
@@ -41,3 +42,5 @@
 using namespace std;
 
 #include "CommonTypes.h"
+
+#endif //_GAMESERVER_PRECOMPILED_H_
