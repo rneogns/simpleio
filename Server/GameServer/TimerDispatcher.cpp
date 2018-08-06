@@ -24,7 +24,7 @@ TimerDispatcher::~TimerDispatcher()
 
 int TimerDispatcher::DISPATCHER_TIMER_LOG(void* object)
 {
-	LOG_DEBUG(L"log");
+	LOG_DEBUG("log");
 
 	return 0;
 }

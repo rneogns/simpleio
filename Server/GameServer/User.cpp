@@ -36,7 +36,7 @@ unsigned int User::GetUserID()
 	return userID;
 }
 
-wchar_t* User::GetUserName()
+char* User::GetUserName()
 {
 	return userName;
 }

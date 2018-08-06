@@ -9,7 +9,7 @@
 #include "Application.h"
 #include "Log.h"
 
-int wmain(int argc, wchar_t* argv[])
+int wmain(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "");
 
@@ -18,7 +18,7 @@ int wmain(int argc, wchar_t* argv[])
 	bool ret = app.Init(argc, argv);
 	if (ret == false)
 	{
-		LOG_CRI(L"Application fail to init");
+		LOG_CRI("Application fail to init");
 		return 1;
 	}
 

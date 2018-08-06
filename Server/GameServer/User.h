@@ -9,7 +9,7 @@ class User
 private:
 	Session* session;
 	unsigned int userID;
-	wchar_t userName[MAX_USER_NAME];
+	char userName[MAX_USER_NAME];
 
 public:
 	User(Session* s);
@@ -20,5 +20,5 @@ public:
 	Session* GetSession();
 	unsigned int GetSessionID();
 	unsigned int GetUserID();
-	wchar_t* GetUserName();
+	char* GetUserName();
 };

@@ -29,14 +29,14 @@ ClientDispatcher::~ClientDispatcher()
 
 void ClientDispatcher::OnConnected(Session* session)
 {
-	LOG_INFO(L"OnConnected!");
+	LOG_INFO("OnConnected!");
 }
 
 void ClientDispatcher::OnDisconnected(Session* session, int err)
 {
 //	USER_MANAGER()->RemoveUser(USER_MANAGER()->FindUser(session->GetID()));
 
-	LOG_INFO(L"OnDisconnected(%d)", err);
+	LOG_INFO("OnDisconnected(%d)", err);
 }
 
 int ClientDispatcher::DISPATCHER_LOGIN_REQUEST(Session* session, Packet* packet)

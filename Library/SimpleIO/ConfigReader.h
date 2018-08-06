@@ -9,7 +9,7 @@
 class ConfigReader
 {
 private:
-	boost::property_tree::wptree pt;
+	boost::property_tree::ptree pt;
 
 public:
 	bool Read(string filename);

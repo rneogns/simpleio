@@ -35,7 +35,7 @@ public:
 
 	static Application& GetInstance();
 
-	bool Init(int argc, wchar_t* argv[]);
+	bool Init(int argc, char* argv[]);
 	void Process();
 	void Close();
 
@@ -46,7 +46,7 @@ public:
 	SimpleIO* GetNetworkEngine();
 
 private:
-	bool ReadConfig(int argc, wchar_t* argv[]);
+	bool ReadConfig(int argc, char* argv[]);
 	bool OpenNetwork();
 	bool ConnectServer();
 	bool ConnectDB();

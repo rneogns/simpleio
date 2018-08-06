@@ -4,43 +4,43 @@
 
 struct NetworkConfig
 {
-	wstring ip;
+	string ip;
 	unsigned short port;
 
 	NetworkConfig()
-		: ip(L""), port(0)
+		: ip(""), port(0)
 	{};
 };
 
 struct LogConfig
 {
-	wstring logPath;
+	string logPath;
 
 	LogConfig()
-		: logPath(L"")
+		: logPath("")
 	{}
 };
 
 struct MysqlConfig
 {
-	wstring ip;
+	string ip;
 	unsigned short port;
-	wstring user;
-	wstring passwd;
-	wstring dbname;
+	string user;
+	string passwd;
+	string dbname;
 
 	MysqlConfig()
-		: ip(L""), port(0), user(L""), passwd(L""), dbname(L"")
+		: ip(""), port(0), user(""), passwd(""), dbname("")
 	{};
 };
 
 struct RedisConfig
 {
-	wstring ip;
+	string ip;
 	unsigned short port;
 
 	RedisConfig()
-		: ip(L""), port(0)
+		: ip(""), port(0)
 	{};
 };
 
@@ -54,5 +54,5 @@ public:
 	MysqlConfig mysqlConfig[MAX_DB_HANDLE];
 	RedisConfig redisConfig[MAX_REDIS_HANDLE];
 
-	bool ReadConfig(wchar_t* fullpath);
+	bool ReadConfig(char* fullpath);
 };

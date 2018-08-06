@@ -29,14 +29,14 @@ MatchingServerDispatcher::~MatchingServerDispatcher()
 
 void MatchingServerDispatcher::OnConnected(Session* session)
 {
-	LOG_INFO(L"OnConnected!");
+	LOG_INFO("OnConnected!");
 }
 
 void MatchingServerDispatcher::OnDisconnected(Session* session, int err)
 {
 //	USER_MANAGER()->RemoveUser(USER_MANAGER()->FindUser(session->GetID()));
 
-	LOG_INFO(L"OnDisconnected(%d)", err);
+	LOG_INFO("OnDisconnected(%d)", err);
 }
 
 int MatchingServerDispatcher::DISPATCHER_LOGIN_REQUEST(Session* session, Packet* packet)
