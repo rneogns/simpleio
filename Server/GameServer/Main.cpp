@@ -9,7 +9,7 @@
 #include "Application.h"
 #include "Log.h"
 
-int wmain(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "");
 
