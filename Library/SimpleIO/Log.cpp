@@ -51,7 +51,6 @@ void LogFile::OpenFile(const string& logPath)
 void LogFile::Write(const string& logPath, const char* funcName, int lineNo, const char* message)
 {
 	static char header[128] = { 0, };
-	static char buffer[LINE_BUFFER] = { 0, };
 
 	if (logPath.empty())
 		return;

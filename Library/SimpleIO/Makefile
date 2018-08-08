@@ -1,6 +1,6 @@
 CXX = g++
 INC = -I../Deps/Boost/Include -I../Deps/Hiredis/Include -I../Deps/MySQL/Include
-CXXFLAGS = -std=c++11 -O0 -g -fpermissive -D_GNU_SOURCE -D_REENTRANT $(INC)
+CXXFLAGS = -std=c++11 -O0 -g -ggdb -Wall -Werror -fpermissive -D_GNU_SOURCE -D_REENTRANT $(INC)
 #LIB_DIR = -L./ -L../Deps/Boost/Lib/ -L../Deps/MySQL/Lib/
 #LDFLAGS = $(LIB_DIR) -lboost_system -lmysql -lstdc++ -lpthread -lrt
 

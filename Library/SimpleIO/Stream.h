@@ -57,6 +57,8 @@ public:
 	{
 		out = (*(T *)byteBuffer->ReadPtr());
 		byteBuffer->Read((int)sizeof(T));
+
+		return true;
 	}
 
 	template <typename T>
@@ -64,6 +66,8 @@ public:
 	{
 		*byteBuffer->WritePtr() = value;
 		byteBuffer->Write((int)sizeof(T));
+
+		return true;
 	}
 };
 

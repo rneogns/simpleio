@@ -81,7 +81,7 @@ void Session::Send(Packet& packet)
 	ByteBuffer* buffer = packet.GetByteBuffer();
 
 	// send 버퍼로 데이터를 copy한다
-	_sendBuffer->Append(packet.GetByteBuffer());
+	_sendBuffer->Append(buffer);
 
 	// send io를 호출한다
 	StartSend();

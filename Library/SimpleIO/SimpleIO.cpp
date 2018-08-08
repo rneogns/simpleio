@@ -19,17 +19,17 @@
 
 SimpleIO::SimpleIO()
 	: ioNotifier(new IONotifier)	
+	, sessionManager(new SessionManager(this))
+	, acceptorManager(new AcceptorManager)
+	, connectorManager(new ConnectorManager)
+	, dbManager(new DBManager)
+	, redisManager(new RedisManager)
 	, workerThread(new WorkerThread(this))
 	, dispatchThread(new DispatchThread(this))
 	, dbThread(new DBThread(this))
 	, redisThread(new RedisThread(this))
-	, sessionManager(new SessionManager(this))
-	, dbManager(new DBManager)
-	, redisManager(new RedisManager)
 	, messageQueue(new MessageQueue)
 	, timerQueue(new TimerQueue)
-	, acceptorManager(new AcceptorManager)
-	, connectorManager(new ConnectorManager)
 	, isRunning(false)
 {
 	Init();

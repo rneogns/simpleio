@@ -9,8 +9,8 @@ Acceptor::Acceptor(IONotifier* ioNotifier, SessionManager* ssMgr, IDispatcher* d
 	: _ioNotifier(ioNotifier)
 	, _sessionMgr(ssMgr)
 	, _dispatcher(disp)
-	, _acceptor(new boost::asio::ip::tcp::acceptor(*ioNotifier->get_io_service()))
 	, _socket(new boost::asio::ip::tcp::socket(*ioNotifier->get_io_service()))
+	, _acceptor(new boost::asio::ip::tcp::acceptor(*ioNotifier->get_io_service()))
 {
 }
 

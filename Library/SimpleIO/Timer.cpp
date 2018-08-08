@@ -3,21 +3,21 @@
 
 Timer::Timer()
 	: timer_id(0)
-	, interval(0)
 	, object(nullptr)
+	, interval(0)
 	, repeat(false)
-	, active_time(0)
 	, enable(false)
+	, active_time(0)
 {
 }
 
 Timer::Timer(unsigned int id, unsigned int interval, void* object, bool repeat)
 	: timer_id(id)
-	, interval(interval)
 	, object(object)
+	, interval(interval)
 	, repeat(repeat)
-	, active_time(0)
 	, enable(false)
+	, active_time(0)
 {
 }
 
