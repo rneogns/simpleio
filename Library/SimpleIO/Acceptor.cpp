@@ -58,9 +58,16 @@ bool Acceptor::StartAccept()
 
 void Acceptor::OnAccept(Session* session, const boost::system::error_code& ec)
 {
-	// Accept가 완료되었을 경우, 패킷을 받기위해 해당세션 소켓에 receive io 작업을 시작한다
-	session->StartRecv();
+	if (ec.value() != 0)
+	{
+		LOG_CORE("Acceptor async_accept job error occurred. error number (%d)", ec.value());
+	}
+	else
+	{
+		// Accept가 완료되었을 경우, 패킷을 받기위해 해당세션 소켓에 receive io 작업을 시작한다
+		session->StartRecv();
 
-	// Accept 작업도 다시 시작한다
-	StartAccept();
+		// Accept 작업도 다시 시작한다
+		StartAccept();
+	}
 }
