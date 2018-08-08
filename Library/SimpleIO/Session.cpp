@@ -149,5 +149,12 @@ void Session::StartSend()
 
 void Session::OnSend(const boost::system::error_code& ec, size_t send_bytes)
 {
-	LOG_CORE("send bytes: %d\n", send_bytes);
+	if (ec.value() != 0)
+	{
+		LOG_CORE("Session async_write job error occurred. error number (%d)", ec.value());
+	}
+	else
+	{
+		LOG_CORE("send bytes: %d\n", send_bytes);
+	}	
 }
